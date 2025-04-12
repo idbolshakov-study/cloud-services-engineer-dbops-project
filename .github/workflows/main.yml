@@ -13,6 +13,7 @@ jobs:
     #### Добавьте шаг с Flyway-миграциями
     - name: Apply migrations
       run: |
+        pwd;
         docker pull flyway/flyway
         docker run --rm -v $(pwd)/migrations:/flyway/sql flyway/flyway migrate \
           -url=jdbc:postgresql://${{ secrets.DB_HOST }}:${{ secrets.DB_PORT }}/${{ secrets.DB_NAME }} \
